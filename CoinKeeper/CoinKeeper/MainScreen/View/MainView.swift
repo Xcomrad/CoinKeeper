@@ -3,6 +3,8 @@ import UIKit
 
 class MainView: UIView {
     
+    private let dataManager = DataManagerImpl()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let itemsCount: CGFloat = 3
@@ -54,7 +56,7 @@ class MainView: UIView {
 extension MainView: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return dataManager.transactions.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
