@@ -4,7 +4,17 @@ import UIKit
 class MainView: UIView {
     
     let dataManager = Di.shared.dataManager
+    
     var completionPresentDeleteAlert: ((UIAlertController)->())?
+    var updateTotalCount: (()->())?
+    
+    lazy var totalLabel: UILabel = {
+       let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        return label
+    }()
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -17,6 +27,7 @@ class MainView: UIView {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = .systemGray6
         
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
         return collectionView
@@ -58,6 +69,7 @@ extension MainView: UICollectionViewDelegate, UICollectionViewDataSource {
             self.dataManager.transactions.remove(at: indexPath.row)
             collectionView.deleteItems(at: [indexPath])
             self.dataManager.saveTransactions()
+            self.updateTotalCount?()
         }))
         self.completionPresentDeleteAlert?(alert)
     }
@@ -70,11 +82,18 @@ extension MainView {
     func setupView() {
         backgroundColor = .systemGray6
         addSubview(collectionView)
+        addSubview(totalLabel)
     }
     
     func setupConstraints() {
         collectionView.snp.makeConstraints { make in
-            make.edges.equalTo(self.safeAreaLayoutGuide)
+            make.top.equalTo(self.safeAreaLayoutGuide)
+            make.bottom.equalTo(totalLabel.snp.bottom).inset(50)
+            make.leading.trailing.equalTo(self)
+        }
+        totalLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
+            make.leading.trailing.equalTo(self)
         }
     }
 }

@@ -15,7 +15,7 @@ class AmountView: UIView {
     
     let amountTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Сумма"
+        textField.placeholder = "Сумма ('-' для убытка )"
         textField.keyboardType = .decimalPad
         textField.borderStyle = .roundedRect
         return textField
