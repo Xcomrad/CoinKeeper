@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		265F256D2C2C21B80038E6C1 /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265F256C2C2C21B80038E6C1 /* AmountView.swift */; };
 		267542AE2C2B0F3800EBDD04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267542AD2C2B0F3800EBDD04 /* AppDelegate.swift */; };
 		267542B02C2B0F3800EBDD04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267542AF2C2B0F3800EBDD04 /* SceneDelegate.swift */; };
 		267542B22C2B0F3800EBDD04 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267542B12C2B0F3800EBDD04 /* MainController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		265F256C2C2C21B80038E6C1 /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
 		267542AA2C2B0F3800EBDD04 /* CoinKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		267542AD2C2B0F3800EBDD04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		267542AF2C2B0F3800EBDD04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				265F256B2C2C1C9A0038E6C1 /* CollectionView */,
+				265F256C2C2C21B80038E6C1 /* AmountView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			files = (
 				26F337EC2C2B4B86008D5027 /* AmountController.swift in Sources */,
 				267542B22C2B0F3800EBDD04 /* MainController.swift in Sources */,
+				265F256D2C2C21B80038E6C1 /* AmountView.swift in Sources */,
 				267542CB2C2B1AF500EBDD04 /* CollectionViewCell.swift in Sources */,
 				267542AE2C2B0F3800EBDD04 /* AppDelegate.swift in Sources */,
 				267542B02C2B0F3800EBDD04 /* SceneDelegate.swift in Sources */,
