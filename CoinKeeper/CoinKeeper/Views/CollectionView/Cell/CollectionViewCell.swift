@@ -7,14 +7,12 @@ class CollectionViewCell: UICollectionViewCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Market"
         label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
     }()
     
     let amountLabel: UILabel = {
         let label = UILabel()
-        label.text = "$ 150"
         label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = .systemGreen
         return label
@@ -33,9 +31,15 @@ class CollectionViewCell: UICollectionViewCell {
     
     //MARK: - Update
     func update(_ transaction: Transaction) {
-           titleLabel.text = transaction.title
-           amountLabel.text = String(format: "$%.2f", transaction.amount)
-       }
+        titleLabel.text = transaction.title
+        amountLabel.text = "\(transaction.amount)"
+        
+        if let amountValue = Double("\(transaction.amount)"), amountValue < 0 {
+                    amountLabel.textColor = .red
+                } else {
+                    amountLabel.textColor = .systemGreen
+                }
+    }
 }
 
 

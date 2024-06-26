@@ -14,10 +14,16 @@ final class MainController: UIViewController {
     override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
         rootView.dataManager.getTransactions()
+        totalCount()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        rootView.updateTotalCount = {
+            self.totalCount()
+        }
+        
         showDeleteAlert()
         setupNavItems()
     }
@@ -28,6 +34,13 @@ final class MainController: UIViewController {
         }
     }
     
+    func totalCount() {
+        let totalCount = dataManager.transactions.reduce(0) { $0 + $1.amount }
+        rootView.totalLabel.text = String(format: "Всего: $%.2f", totalCount)
+        rootView.totalLabel.textColor = totalCount < 0 ? .red : .systemGreen
+    }
+    
+    //MARK: Action
     @objc func addNewTransaction() {
         let addVC = AmountController()
         addVC.delegate = self
@@ -42,6 +55,7 @@ extension MainController: AddTransactionDelegate {
         dataManager.transactions.append(transaction)
         rootView.collectionView.reloadData()
         dataManager.saveTransactions()
+        totalCount()
     }
 }
 
@@ -50,9 +64,10 @@ extension MainController: AddTransactionDelegate {
 extension MainController {
     
     func setupNavItems() {
-        title = "Mой кошелек"
+        title = "Mой кошелёк"
         let addButton = UIBarButtonItem(barButtonSystemItem: .add,
-                                        target: self, action: #selector(addNewTransaction))
+                                        target: self, 
+                                        action: #selector(addNewTransaction))
         navigationItem.rightBarButtonItem = addButton
     }
 }
