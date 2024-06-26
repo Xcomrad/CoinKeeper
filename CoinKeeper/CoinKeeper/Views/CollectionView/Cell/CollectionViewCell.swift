@@ -7,13 +7,15 @@ class CollectionViewCell: UICollectionViewCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.text = "Market"
         label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
     }()
     
     let amountLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.text = "$ 150"
+        label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = .systemGreen
         return label
     }()
@@ -41,7 +43,7 @@ class CollectionViewCell: UICollectionViewCell {
 extension CollectionViewCell {
     
     func setup() {
-        layer.cornerRadius = 50
+        layer.cornerRadius = 20
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.5
         layer.shadowOffset = CGSize(width: 0, height: 5)
@@ -56,12 +58,12 @@ extension CollectionViewCell {
     
     func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(contentView).inset(16)
-            make.centerX.equalTo(contentView)
+            make.leading.equalTo(self.snp.leading).inset(20)
+            make.centerY.equalTo(contentView)
         }
         
         amountLabel.snp.makeConstraints { make in
-            make.trailing.equalTo(contentView).inset(-16)
+            make.trailing.equalTo(self.snp.trailing).inset(20)
             make.centerY.equalTo(contentView)
         }
     }
